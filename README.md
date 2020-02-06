@@ -107,6 +107,8 @@ A API service for a small bank.
 
 ## Account API
 
+- Warning: to add account, I modified "DEPOSIT" command that account will be created if there are no account with accountId.
+
 #### routes/accounts.js
 
 ```javascript
