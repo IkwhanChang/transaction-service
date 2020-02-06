@@ -23,8 +23,9 @@ A API service for a small bank.
 1. Clone the repository: git clone https://www.github.com/IkwhanChang/transaction-service.git
 2. Go to transaction-service folder
 3. chmod 707 ./app.sh
-4. ./app.sh run
-5. Test http://localhost:5000/accounts
+4. Make sure you're running Docker
+5. run "./app.sh run" -> will set up both redis, mongodb, and this service, and will run everything inside docker.
+6. Go and test via http://localhost:5000/accounts
 
 [Installation without Docker]
 

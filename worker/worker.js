@@ -78,7 +78,7 @@ class Worker {
   }
 
   start() {
-    console.log("Start");
+    console.log("Worker started");
     this.listener = setInterval(() => {
       this.receive();
     }, 50);
@@ -117,7 +117,6 @@ class Worker {
 
   send(message, callback) {
     successCallback = callback;
-    console.log("send", message, successCallback);
     this.rsmq.sendMessage({ qname, message }, function(err, resp) {
       if (err) {
         console.error(err);
@@ -128,15 +127,11 @@ class Worker {
 
   deleteMessage(id) {
     const { res, rsmq, isError, errors } = this;
-    console.log("here");
     rsmq.deleteMessage({ qname, id }, (err, resp) => {
       if (!err) {
         this.messageCnt = this.messageCnt - 1;
-        console.log("here4", this.messageCnt, successCallback);
         if (this.messageCnt <= 0) {
-          console.log("here2");
           successCallback(this.messageCnt, isError, errors);
-          console.log("here3");
           this.stop();
         }
       } else {
