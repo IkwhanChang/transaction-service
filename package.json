@@ -1,0 +1,32 @@
+{
+  "name": "transaction-processor-service",
+  "version": "1.0.0",
+  "description": "A Small Bank HTTP Service",
+  "main": "server.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha",
+    "start": "nodemon --exec babel-node  server.js",
+    "server": "nodemon --exec babel-node  server.js"
+  },
+  "author": "Matthew Chang (matthew.chang@me.com)",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/node": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "babel-node": "^0.0.1-security",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "expect.js": "^0.3.1",
+    "express": "^4.17.1",
+    "lodash": "^4.17.15",
+    "mongoose": "^5.8.11",
+    "nodemon": "^2.0.2",
+    "rsmq": "^0.11.0"
+  },
+  "devDependencies": {
+    "mocha": "^7.0.1",
+    "supertest": "^4.0.2"
+  }
+}

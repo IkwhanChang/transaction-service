@@ -1,0 +1,31 @@
+[
+  {
+    "cmd": "DEPOSIT",
+    "accountId": "ACT300",
+    "amount": 100.00
+  },
+  {
+    "cmd": "XFER",
+    "fromId": "ACT300",
+    "toId": "ACT100",
+    "amount": 10.00
+  },
+  {
+    "cmd": "FREEZE",
+    "accountId": "ACT303"
+  },
+  {
+    "cmd": "DEPOSIT",
+    "accountId": "ACT303",
+    "amount": 20.00
+  },
+  {
+    "cmd": "WITHDRAW",
+    "accountId": "ACT100",
+    "amount": 5.00
+  },
+  {
+    "cmd": "THAW",
+    "accountId": "ACT303"
+  }
+]
