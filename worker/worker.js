@@ -8,6 +8,7 @@ import RedisSMQ from "rsmq";
 import TransactionAPI from "../api/transaction";
 
 const qname = process.env.QUEUE_NAME || "scratch";
+let successCallback = () => {};
 
 class Worker {
   constructor(messageCnt = 0) {
@@ -18,7 +19,7 @@ class Worker {
     });
 
     // Default variables
-    this.successCallback = () => {};
+    //this.successCallback = () => {};
     this.isError = false;
     this.errors = [];
     this.messageCnt = messageCnt;
@@ -114,9 +115,9 @@ class Worker {
     });
   }
 
-  send(message, successCallback) {
-    console.log("send", message);
-    this.successCallback = successCallback;
+  send(message, callback) {
+    successCallback = callback;
+    console.log("send", message, successCallback);
     this.rsmq.sendMessage({ qname, message }, function(err, resp) {
       if (err) {
         console.error(err);
@@ -127,15 +128,19 @@ class Worker {
 
   deleteMessage(id) {
     const { res, rsmq, isError, errors } = this;
-
+    console.log("here");
     rsmq.deleteMessage({ qname, id }, (err, resp) => {
       if (!err) {
         this.messageCnt = this.messageCnt - 1;
-
-        if (this.messageCnt === 0) {
-          this.successCallback(this.messageCnt, isError, errors);
+        console.log("here4", this.messageCnt, successCallback);
+        if (this.messageCnt <= 0) {
+          console.log("here2");
+          successCallback(this.messageCnt, isError, errors);
+          console.log("here3");
           this.stop();
         }
+      } else {
+        console.log("Err", err);
       }
     });
   }

@@ -368,14 +368,14 @@ describe("Thaw Test", () => {
   });
 });
 
-describe("Restore all test data", () => {
-  it("delete ACT310", done => {
-    removeByAccountId("ACT310", err => done(err));
-  });
-  it("delete ACT320", done => {
-    removeByAccountId("ACT320", err => done(err));
-  });
-});
+// describe("Restore all test data", () => {
+//   it("delete ACT310", done => {
+//     removeByAccountId("ACT310", err => done(err));
+//   });
+//   it("delete ACT320", done => {
+//     removeByAccountId("ACT320", err => done(err));
+//   });
+// });
 
 describe("GET /accounts", () => {
   it("return accounts", done => {

@@ -17,7 +17,8 @@ router.post("/", (req, res) => {
     });
     console.log(params);
     worker.send(params, (messageCnt, isError, errors) => {
-      if (messageCnt === 0) {
+      console.log(messageCnt, isError, errors);
+      if (messageCnt <= 0) {
         if (isError) {
           res.json({ errors });
         } else {

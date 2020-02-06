@@ -56,6 +56,7 @@ class TransactionAPI {
   deposit({ cmd, accountId, amount }) {
     return new Promise((resolve, reject) => {
       // parameter validations
+      console.log(cmd, accountId, amount);
       if (!isStr(accountId)) {
         reject(errorObj(cmd, "Invaild accountId"));
       } else if (!isInt(amount) || amount < 0) {
@@ -92,6 +93,7 @@ class TransactionAPI {
                       { upsert: true }
                     )
                       .then(() => {
+                        console.log("here");
                         resolve();
                       })
                       .catch(e => reject(e));
