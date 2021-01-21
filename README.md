@@ -1,6 +1,6 @@
 # Transaction Processor Service
 
-A API service for a small bank.
+An API service for a small bank.
 
 ## Specifications
 
